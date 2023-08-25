@@ -15,7 +15,7 @@ const Home = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [characterSelected, setCharacterSelected] = useState('');
   const [ingredientScore, setIngredientScore] = useState(0);
-  const [drinkScore, setDrinkScore] = useState(0);
+  const [drinkScore, setDrinkScore] = useState('0');
 
   const onFinish = (values: any) => {
     // load data from src/constants/characters.json
@@ -59,8 +59,8 @@ const Home = () => {
 
     // if the tags are less then 3, then we need to add ingredients to fit the character
     let ingredients = [];
+    // find out what tags are missing from the character and add them to the ingredients
     if (matchCount < 3) {
-      // find out what tags are missing from the character and add them to the ingredients
       const exisitingTags = characterTags.filter((tag: string) => dishesTagsFlat.includes(tag));
       console.log('exisitingTags', exisitingTags);
       const missingTags = characterTags.filter((tag: string) => !dishesTagsFlat.includes(tag));
@@ -86,8 +86,9 @@ const Home = () => {
         // add the first ingredient to the ingredients list
         ingredients.push(ingredientsFound[0]);
       }
-      setIngredientScore(characterTags.filter((tag: string) => dishesTagsFlat.includes(tag)).length + ingredients.length);
     }
+    console.log('ingredients score: ', characterTags.filter((tag: string) => dishesTagsFlat.includes(tag)).length + ingredients.length);
+    setIngredientScore(characterTags.filter((tag: string) => dishesTagsFlat.includes(tag)).length + ingredients.length);
 
     // find drinks that match the character with required drink tag
     const drinks = drinksData.filter((drink: any) => {
@@ -96,10 +97,27 @@ const Home = () => {
       // make it so the drink matches the required tag as well as match at least 2 drink tags of the character
       // if no drinks are found with 2 tags, then just match the required tag
       const drinks = drinkTags.some((tag: string) => characterDrinkTags.includes(tag) && tag === requiredDrinkTag) && (drinkTags.filter((tag: string) => characterDrinkTags.includes(tag)).length >= 2 || drinkTags.some((tag: string) => characterDrinkTags.includes(tag) && tag === requiredDrinkTag));
-      setDrinkScore(drinkTags.filter((tag: string) => characterDrinkTags.includes(tag)).length);
       return drinks;
     });
 
+    // sort drinks by number of tags that match the character
+    drinks.sort((a: any, b: any) => {
+      const aDrinkTags = a.tags;
+      const bDrinkTags = b.tags;
+      const aDrinkTagsMatch = aDrinkTags.filter((tag: string) => characterDrinkTags.includes(tag)).length;
+      const bDrinkTagsMatch = bDrinkTags.filter((tag: string) => characterDrinkTags.includes(tag)).length;
+      return bDrinkTagsMatch - aDrinkTagsMatch;
+    });
+
+    console.log('drinks score: ', drinks.map((drink: any) => {
+      const drinkTags = drink.tags;
+      return drinkTags.filter((tag: string) => characterDrinkTags.includes(tag)).length;
+    }).join(', '));
+    setDrinkScore(drinks.map((drink: any) => {
+      const drinkTags = drink.tags;
+      return drinkTags.filter((tag: string) => characterDrinkTags.includes(tag)).length;
+    }).join(', '));
+    
     console.log('drinks', drinks);
 
 
