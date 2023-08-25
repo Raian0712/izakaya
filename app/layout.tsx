@@ -1,8 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import { ConfigProvider } from 'antd'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +14,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>
+        <ConfigProvider
+          theme={{
+            token: {
+              // Seed Token
+              colorPrimary: '#6e2a2b',
+              borderRadius: 8,
+      
+              // Alias Token
+              colorBgContainer: '#ffffff',
+            },
+          }}
+        >
+          {children}
+        </ConfigProvider>
+      </body>
     </html>
   )
 }

@@ -1,0 +1,922 @@
+[
+  {
+    "name": "莉格露",
+    "foodPreferences": [
+      "甜",
+      "肉",
+      "猎奇",
+      "生"
+    ],
+    "foodDislikes": [
+      "素",
+      "清淡",
+      "凉爽"
+    ],
+    "proTrend": "neutral",
+    "drinkPreferences": [
+      "低酒精",
+      "可加冰"
+    ],
+    "budgetLow": 200,
+    "budgetHigh": 400
+  },
+  {
+    "name": "露米娅",
+    "foodPreferences": [
+      "招牌",
+      "猎奇",
+      "饱腹",
+      "生",
+      "肉",
+      "流行-喜爱"
+    ],
+    "foodDislikes": [
+      "下酒",
+      "流行-厌恶",
+      "昂贵"
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+      "气泡",
+      "苦"
+    ],
+    "budgetLow": 150,
+    "budgetHigh": 350
+  },
+  {
+    "name": "橙",
+    "foodPreferences": [
+      "甜",
+      "重油",
+      "烧烤",
+      "水产",
+      "肉",
+      "流行-喜爱"
+    ],
+    "foodDislikes": [
+      "素",
+      "流行-厌恶",
+      "猎奇",
+      "灼热"
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+      "辛",
+      "水果"
+    ],
+    "budgetLow": 400,
+    "budgetHigh": 600
+  },
+  {
+    "name": "稗田阿求",
+    "foodPreferences": [
+      "高级",
+      "清淡",
+      "和风",
+      "流行-喜爱",
+      "文化底蕴",
+      "甜",
+      "汤羹"
+    ],
+    "foodDislikes": [
+      "重油",
+      "咸",
+      "灼热",
+      "流行-厌恶"
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+      "可加热",
+      "清酒"
+    ],
+    "budgetLow": 500,
+    "budgetHigh": 800
+  },
+  {
+    "name": "上白泽慧音",
+    "foodPreferences": [
+      "清淡",
+      "素",
+      "家常",
+      "文化底蕴",
+      "和风",
+      "中华",
+      "流行-喜爱"
+    ],
+    "foodDislikes": [
+      "重油",
+      "流行-厌恶",
+      "大份",
+      "咸"
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+      "烧酒",
+      "清酒",
+      "利口酒"
+    ],
+    "budgetLow": 400,
+    "budgetHigh": 800
+  },
+  {
+    "name": "茨木华扇",
+    "foodPreferences": [
+      "文化底蕴",
+      "家常",
+      "下酒",
+      "和风"
+    ],
+    "foodDislikes": [
+      "实惠",
+      "辣",
+      "生"
+    ],
+    "proTrend": "neutral",
+    "drinkPreferences": [
+      "直饮",
+      "中酒精",
+      "古典"
+    ],
+    "budgetLow": 400,
+    "budgetHigh": 600
+  },
+  {
+    "name": "博丽灵梦",
+    "foodPreferences": [
+      "甜",
+      "实惠",
+      "高级",
+      "饱腹",
+      "流行-喜爱",
+      "不可思议"
+    ],
+    "foodDislikes": [
+      "昂贵",
+      "流行-厌恶",
+      "下酒"
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+      "低酒精",
+      "可加热",
+      "无酒精"
+    ],
+    "budgetLow": 150,
+    "budgetHigh": 300
+  },
+  {
+    "name": "伊吹萃香",
+    "foodPreferences": [
+      "和风",
+      "肉",
+      "下酒",
+      "力量涌现",
+      "小巧",
+      "流行-喜爱"
+    ],
+    "foodDislikes": [
+      "重油",
+      "流行-厌恶"
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+      "直饮",
+      "高酒精"
+    ],
+    "budgetLow": 600,
+    "budgetHigh": 800
+  },
+  {
+    "name": "比那名居天子",
+    "foodPreferences": [
+      "甜",
+      "昂贵",
+      "素",
+      "适合拍照",
+      "果味",
+      "清淡",
+      "流行-厌恶"
+    ],
+    "foodDislikes": [
+      "流行-喜爱",
+      "肉",
+      "家常",
+      "重油"
+    ],
+    "proTrend": "no",
+    "drinkPreferences": [
+      "鸡尾酒",
+      "高酒精"
+    ],
+    "budgetLow": 2000,
+    "budgetHigh": 3000
+  },
+  {
+    "name": "雾雨魔理沙",
+    "foodPreferences": [
+      "和风",
+      "灼热",
+      "菌类",
+      "传说",
+      "流行-喜爱",
+      "重油"
+    ],
+    "foodDislikes": [
+      "流行-厌恶",
+      "猎奇"
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+      "可加冰",
+      "低酒精"
+    ],
+    "budgetLow": 3000,
+    "budgetHigh": 5000
+  },
+  {
+    "name": "红美铃",
+    "foodPreferences": [
+      "饱腹",
+      "肉",
+      "力量涌现",
+      "中华",
+      "流行-喜爱"
+    ],
+    "foodDislikes": [
+      "流行-厌恶",
+      "西式",
+      "猎奇",
+      "果味"
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+      "提神",
+      "可加热",
+      "古典"
+    ],
+    "budgetLow": 200,
+    "budgetHigh": 400
+  },
+  {
+    "name": "琪露诺",
+    "foodPreferences": [
+      "凉爽",
+      "甜",
+      "适合拍照",
+      "猎奇",
+      "流行-厌恶"
+    ],
+    "foodDislikes": [
+      "流行-喜爱",
+      "昂贵",
+      "文化底蕴",
+      "下酒"
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+      "水果",
+      "甘",
+      "可加冰"
+    ],
+    "budgetLow": 100,
+    "budgetHigh": 200
+  },
+  {
+    "name": "帕秋莉",
+    "foodPreferences": [
+      "适合拍照",
+      "高级",
+      "西式",
+      "甜",
+      "梦幻"
+    ],
+    "foodDislikes": [
+      "生",
+      "猎奇",
+      "灼热",
+      "咸"
+    ],
+    "proTrend": "neutral",
+    "drinkPreferences": [
+      "鸡尾酒",
+      "气泡",
+      "利口酒"
+    ],
+    "budgetLow": 600,
+    "budgetHigh": 1000
+  },
+  {
+    "name": "藤原妹红",
+    "foodPreferences": [
+      "果味",
+      "辣",
+      "燃起来了",
+      "灼热",
+      "烧烤"
+    ],
+    "foodDislikes": [
+      "昂贵",
+      "高级",
+      "不可思议"
+    ],
+    "proTrend": "neutral",
+    "drinkPreferences": [
+      "烧酒",
+      "苦",
+      "辛"
+    ],
+    "budgetLow": 300,
+    "budgetHigh": 600
+  },
+  {
+    "name": "蓬莱山辉夜",
+    "foodPreferences": [
+      "和风",
+      "传说",
+      "文化底蕴",
+      "不可思议",
+      "流行-喜爱"
+    ],
+    "foodDislikes": [
+      "大份",
+      "招牌",
+      "猎奇",
+      "流行-厌恶"
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+      "现代",
+      "清酒",
+      "古典"
+    ],
+    "budgetLow": 1000,
+    "budgetHigh": 1500
+  },
+  {
+    "name": "因幡帝",
+    "foodPreferences": [
+      "小巧",
+      "甜",
+      "凉爽",
+      "梦幻",
+      "传说",
+      "流行-喜爱"
+    ],
+    "foodDislikes": [
+      "流行-厌恶",
+      "重油",
+      "山珍",
+      "猎奇"
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+      "水果",
+      "甘",
+      "无酒精"
+    ],
+    "budgetLow": 200,
+    "budgetHigh": 400
+  },
+  {
+    "name": "河城荷取",
+    "foodPreferences": [
+      "水产",
+      "高级",
+      "招牌",
+      "咸",
+      "下酒",
+      "猎奇"
+    ],
+    "foodDislikes": [
+      "素",
+      "文化底蕴",
+      "山珍"
+    ],
+    "proTrend": "neutral",
+    "drinkPreferences": [
+      "高酒精",
+      "直饮",
+      "中酒精",
+      "清酒"
+    ],
+    "budgetLow": 400,
+    "budgetHigh": 500
+  },
+  {
+    "name": "犬走椛",
+    "foodPreferences": [
+      "山珍",
+      "重油",
+      "肉",
+      "下酒",
+      "大份"
+    ],
+    "foodDislikes": [
+      "猎奇",
+      "清淡",
+      "素"
+    ],
+    "proTrend": "neutral",
+    "drinkPreferences": [
+      "中酒精",
+      "直饮",
+      "高酒精"
+    ],
+    "budgetLow": 300,
+    "budgetHigh": 400
+  },
+  {
+    "name": "东风谷早苗",
+    "foodPreferences": [
+      "家常",
+      "适合拍照",
+      "和风",
+      "甜",
+      "梦幻",
+      "流行-喜爱"
+    ],
+    "foodDislikes": [
+      "生",
+      "灼热",
+      "猎奇",
+      "重油"
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+      "低酒精",
+      "气泡",
+      "苦",
+      "水果",
+      "甘",
+      "清酒",
+      "无酒精",
+      "现代",
+      "直饮"
+    ],
+    "budgetLow": 400,
+    "budgetHigh": 600
+  },
+  {
+    "name": "爱丽丝",
+    "foodPreferences": [
+      "文化底蕴",
+      "家常",
+      "西式",
+      "甜",
+      "高级"
+    ],
+    "foodDislikes": [
+      "肉",
+      "重油",
+      "饱腹",
+      "猎奇"
+    ],
+    "proTrend": "neutral",
+    "drinkPreferences": [
+      "水果",
+      "现代",
+      "低酒精"
+    ],
+    "budgetLow": 500,
+    "budgetHigh": 800
+  },
+  {
+    "name": "矢田寺成美",
+    "foodPreferences": [
+      "文化底蕴",
+      "清淡",
+      "和风",
+      "特产",
+      "山珍"
+    ],
+    "foodDislikes": [
+      "重油",
+      "饱腹"
+    ],
+    "proTrend": "neutral",
+    "drinkPreferences": [
+      "可加冰",
+      "直饮",
+      "古典",
+      "低酒精",
+      "中酒精"
+    ],
+    "budgetLow": 300,
+    "budgetHigh": 600
+  },
+  {
+    "name": "黑谷山女",
+    "foodPreferences": [
+      "鲜",
+      "生",
+      "适合拍照",
+      "猎奇",
+      "甜",
+      "流行-喜爱"
+    ],
+    "foodDislikes": [
+      "咸",
+      "重油",
+      "灼热"
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+      "低酒精",
+      "啤酒",
+      "中酒精",
+      "甘"
+    ],
+    "budgetLow": 250,
+    "budgetHigh": 400
+  },
+  {
+    "name": "水桥帕露西",
+    "foodPreferences": [
+      "咸",
+      "肉",
+      "果味",
+      "辣",
+      "鲜",
+      "酸",
+      "流行-厌恶"
+    ],
+    "foodDislikes": [
+      "甜",
+      "流行-喜爱"
+    ],
+    "proTrend": "no",
+    "drinkPreferences": [
+      "苦",
+      "直饮",
+      "辛",
+      "无酒精",
+      "可加热"
+    ],
+    "budgetLow": 300,
+    "budgetHigh": 400
+  },
+  {
+    "name": "星熊勇仪",
+    "foodPreferences": [
+      "力量涌现",
+      "传说",
+      "大份",
+      "招牌",
+      "流行-喜爱",
+      "下酒",
+      "和风",
+      "燃起来了"
+    ],
+    "foodDislikes": [
+      "素",
+      "猎奇",
+      "小巧"
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+      "高酒精",
+      "啤酒",
+      "清酒",
+      "古典"
+    ],
+    "budgetLow": 600,
+    "budgetHigh": 1000
+  },
+  {
+    "name": "古明地觉",
+    "foodPreferences": [
+      "家常",
+      "小巧",
+      "甜",
+      "力量涌现",
+      "特产",
+      "梦幻"
+    ],
+    "foodDislikes": [
+      "大份",
+      "肉",
+      "山珍",
+      "灼热",
+      "猎奇"
+    ],
+    "proTrend": "neutral",
+    "drinkPreferences": [
+      "提神",
+      "苦",
+      "气泡",
+      "无酒精"
+    ],
+    "budgetLow": 500,
+    "budgetHigh": 600
+  },
+  {
+    "name": "古明地恋",
+    "foodPreferences": [
+      "不可思议",
+      "甜",
+      "咸",
+      "生",
+      "梦幻",
+      "猎奇"
+    ],
+    "foodDislikes": [],
+    "proTrend": "neutral",
+    "drinkPreferences": [
+      "苦",
+      "气泡",
+      "烧酒",
+      "高酒精"
+    ],
+    "budgetLow": 800,
+    "budgetHigh": 1200
+  },
+  {
+    "name": "火焰猫燐",
+    "foodPreferences": [
+      "甜",
+      "梦幻",
+      "海味",
+      "水产",
+      "鲜",
+      "流行-喜爱",
+      "猎奇"
+    ],
+    "foodDislikes": [
+      "生",
+      "灼热"
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+      "清酒",
+      "低酒精",
+      "水果"
+    ],
+    "budgetLow": 500,
+    "budgetHigh": 700
+  },
+  {
+    "name": "灵乌路空",
+    "foodPreferences": [
+      "咸",
+      "力量涌现",
+      "肉",
+      "灼热",
+      "重油",
+      "辣"
+    ],
+    "foodDislikes": [
+      "清淡",
+      "菌类"
+    ],
+    "proTrend": "neutral",
+    "drinkPreferences": [
+      "鸡尾酒",
+      "中酒精",
+      "可加热"
+    ],
+    "budgetLow": 500,
+    "budgetHigh": 800
+  },
+  {
+    "name": "多多良小伞",
+    "foodPreferences": [
+      "饱腹",
+      "甜",
+      "适合拍照",
+      "猎奇",
+      "家常",
+      "力量涌现",
+      "不可思议",
+      "流行-喜爱"
+    ],
+    "foodDislikes": [
+      "辣",
+      "灼热",
+      "汤羹"
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+      "中酒精",
+      "古典",
+      "水果",
+      "可加冰"
+    ],
+    "budgetLow": 150,
+    "budgetHigh": 300
+  },
+  {
+    "name": "村纱水蜜",
+    "foodPreferences": [
+      "鲜",
+      "饱腹",
+      "特产",
+      "肉",
+      "咸",
+      "力量涌现",
+      "高级"
+    ],
+    "foodDislikes": [
+      "素",
+      "猎奇",
+      "小巧",
+      "辣"
+    ],
+    "proTrend": "neutral",
+    "drinkPreferences": [
+      "西洋酒",
+      "高酒精",
+      "可加冰",
+      "辛"
+    ],
+    "budgetLow": 400,
+    "budgetHigh": 600
+  },
+  {
+    "name": "封兽鵺",
+    "foodPreferences": [
+      "肉",
+      "鲜",
+      "适合拍照",
+      "特产",
+      "不可思议",
+      "猎奇",
+      "招牌",
+      "生",
+      "流行-厌恶"
+    ],
+    "foodDislikes": [
+      "酸",
+      "西式",
+      "流行-喜爱"
+    ],
+    "proTrend": "no",
+    "drinkPreferences": [
+      "古典",
+      "可加热",
+      "直饮",
+      "烧酒"
+    ],
+    "budgetLow": 300,
+    "budgetHigh": 500
+  },
+  {
+    "name": "物部布都",
+    "foodPreferences": [
+      "清淡",
+      "清淡",
+      "传说",
+      "高级",
+      "和风",
+      "燃起来了",
+      "流行-喜爱"
+    ],
+    "foodDislikes": [
+      "生",
+      "西式",
+      "流行-厌恶"
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+      "可加热",
+      "中酒精",
+      "气泡",
+      "直饮"
+    ],
+    "budgetLow": 600,
+    "budgetHigh": 900
+  },
+  {
+    "name": "霍青娥",
+    "foodPreferences": [
+      "特产",
+      "甜",
+      "小巧",
+      "中华",
+      "素",
+      "传说",
+      "不可思议",
+      "流行-喜爱"
+    ],
+    "foodDislikes": [
+      "饱腹",
+      "重油"
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+      "现代",
+      "清酒",
+      "低酒精",
+      "水果"
+    ],
+    "budgetLow": 400,
+    "budgetHigh": 900
+  },
+  {
+    "name": "苏我屠自古",
+    "foodPreferences": [
+    ],
+    "foodDislikes": [
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+    ],
+    "budgetLow": 0,
+    "budgetHigh": 0
+  },
+  {
+    "name": "射命丸文",
+    "foodPreferences": [
+    ],
+    "foodDislikes": [
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+    ],
+    "budgetLow": 0,
+    "budgetHigh": 0
+  },
+  {
+    "name": "梅蒂欣",
+    "foodPreferences": [
+    ],
+    "foodDislikes": [
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+    ],
+    "budgetLow": 0,
+    "budgetHigh": 0
+  },
+  {
+    "name": "风见幽香",
+    "foodPreferences": [
+    ],
+    "foodDislikes": [
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+    ],
+    "budgetLow": 0,
+    "budgetHigh": 0
+  },
+  {
+    "name": "鬼人正邪",
+    "foodPreferences": [
+      "下酒",
+      "重油",
+      "力量涌现"
+    ],
+    "foodDislikes": [
+      
+    ],
+    "proTrend": "neutral",
+    "drinkPreferences": [
+      "直饮",
+      "中酒精"
+    ],
+    "budgetLow": 300,
+    "budgetHigh": 600
+  },
+  {
+    "name": "少名针妙丸",
+    "foodPreferences": [
+      "和风",
+      "传说",
+      "文化底蕴",
+      "小巧"
+    ],
+    "foodDislikes": [
+      "大份"
+    ],
+    "proTrend": "neutral",
+    "drinkPreferences": [
+      "低酒精",
+      "气泡",
+      "古典"
+    ],
+    "budgetLow": 600,
+    "budgetHigh": 1200
+  },
+  {
+    "name": "今泉影狼",
+    "foodPreferences": [
+      "凉爽",
+      "家常",
+      "和风",
+      "流行-喜爱",
+      "山珍",
+      "肉",
+      "适合拍照"
+    ],
+    "foodDislikes": [
+      "流行-厌恶"
+    ],
+    "proTrend": "yes",
+    "drinkPreferences": [
+      "直饮",
+      "清酒"
+    ],
+    "budgetLow": 300,
+    "budgetHigh": 600
+  }
+]

@@ -1,113 +1,229 @@
-import Image from 'next/image'
+"use client";
+import { Row, Col, Card, Form, InputNumber, Select, Button, Modal, Input } from "antd";
+import { useForm } from "antd/lib/form/Form";
+import { useState } from "react";
+const characterData = require(`@constants/characters.json`);
+const dishesData = require(`@constants/dishes.json`);
+const ingredientsData = require(`@constants/ingredients.json`);
+const drinksData = require(`@constants/drinks.json`);
+const foodTagsData = require(`@constants/foodTags.json`);
+const drinkTagsData = require(`@constants/drinkTags.json`);
 
-export default function Home() {
+const Home = () => {
+  const [form] = useForm();
+  const [resultsForm] = useForm();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [characterSelected, setCharacterSelected] = useState('');
+  const [ingredientScore, setIngredientScore] = useState(0);
+  const [drinkScore, setDrinkScore] = useState(0);
+
+  const onFinish = (values: any) => {
+    // load data from src/constants/characters.json
+    const character = values.character;
+    const requiredTag = values.requiredTag;
+    const requiredDrinkTag = values.requiredDrinkTag;
+    const currentBudget = values.currentBudget;
+    let remainingBudget = currentBudget;
+
+    // find character
+    const characterFound = characterData.find(
+      (characterItem: any) => characterItem.name === character
+    );
+
+    // find which dish to make based on character tags and dishes tags
+    const characterTags = characterFound.foodPreferences;
+    const characterDrinkTags = characterFound.drinkPreferences;
+    let dish = dishesData.find((dish: any) => {
+      const dishTags = dish.tags;
+      return dishTags.some((tag: string) => characterTags.includes(tag) && tag === requiredTag && dish.price <= currentBudget);
+    });
+
+    // if no dishes are found, default to the first dish
+    if (!dish) {
+      dish = dishesData[0];
+      remainingBudget = currentBudget - dish.price;
+    }
+
+    console.log('dishes', dish)
+
+    // calculate the amount of tags that satisfy the character based on current dishes
+    const dishesTags = dish.tags;
+    const dishesIncompatibleTags = dish.incompatibleTags;
+    const dishIngredients = dish.ingredients;
+    const dishCookware = dish.cookware;
+    const dishesTagsFlat = dishesTags.flat();
+    // compare dishesTagsFlat with characterTags
+    const matchCount = characterTags.filter((tag: string) => dishesTagsFlat.includes(tag)).length;
+
+    console.log('dishesTagsFlat', dishesTagsFlat)
+
+    // if the tags are less then 3, then we need to add ingredients to fit the character
+    let ingredients = [];
+    if (matchCount < 3) {
+      // find out what tags are missing from the character and add them to the ingredients
+      const exisitingTags = characterTags.filter((tag: string) => dishesTagsFlat.includes(tag));
+      console.log('exisitingTags', exisitingTags);
+      const missingTags = characterTags.filter((tag: string) => !dishesTagsFlat.includes(tag));
+      console.log('missingTags', missingTags);
+      let remainingTagsCount = 3 - exisitingTags.length;
+      console.log('remainingTagsCount', remainingTagsCount)
+      // find ingredients that match the missing tags
+      for (const missingTag of missingTags) {
+        if (remainingTagsCount === 0) {
+          break;
+        }
+        // find ingredients that match the missing tag
+        const ingredientsFound = ingredientsData.filter((ingredient: any) => {
+          const ingredientTags = ingredient.tags;
+          // return ingredientTags that includes the missing tag and ingredientTags is not in the dishes incompatible tags
+          return ingredientTags.includes(missingTag) && !(dishesIncompatibleTags || []).includes(ingredientTags);
+        });
+        console.log('ingredientsFound', ingredientsFound);
+        if (ingredientsFound.length === 0) {
+          continue;
+        }
+        remainingTagsCount -= 1;
+        // add the first ingredient to the ingredients list
+        ingredients.push(ingredientsFound[0]);
+      }
+      setIngredientScore(characterTags.filter((tag: string) => dishesTagsFlat.includes(tag)).length + ingredients.length);
+    }
+
+    // find drinks that match the character with required drink tag
+    const drinks = drinksData.filter((drink: any) => {
+      const drinkTags = drink.tags;
+
+      // make it so the drink matches the required tag as well as match at least 2 drink tags of the character
+      // if no drinks are found with 2 tags, then just match the required tag
+      const drinks = drinkTags.some((tag: string) => characterDrinkTags.includes(tag) && tag === requiredDrinkTag) && (drinkTags.filter((tag: string) => characterDrinkTags.includes(tag)).length >= 2 || drinkTags.some((tag: string) => characterDrinkTags.includes(tag) && tag === requiredDrinkTag));
+      setDrinkScore(drinkTags.filter((tag: string) => characterDrinkTags.includes(tag)).length);
+      return drinks;
+    });
+
+    console.log('drinks', drinks);
+
+
+    console.log('ingredients', ingredients)
+    const extraIngredients = ingredients.map((ingredient: any) => ingredient.name);
+
+    // amend to results
+    const results = {
+      dishName: dish.name,
+      dishCookware,
+      ingredients: [
+        ...dishIngredients, ...extraIngredients
+      ],
+      drinks
+    };
+
+    resultsForm.setFieldValue('dishName', dish.name);
+    resultsForm.setFieldValue('dishCookware', dishCookware);
+    resultsForm.setFieldValue('ingredients', results.ingredients.join(', '));
+    resultsForm.setFieldValue('drinks', results.drinks.map((drink: any) => drink.name).join(', '));
+    setModalOpen(true);
+
+    console.log(results);
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <div className="px-5 h-full">
+      <Row justify="center">
+        <Col md={12}>
+          <Card>
+            <h3 className="text-h3 mt-0 mb-5">Calculator</h3>
+            <Form
+              layout="vertical"
+              form={form}
+              onFinish={onFinish}
+            >
+              <Form.Item name="character" label="Character">
+                <Select onChange={(value) => {
+                  setCharacterSelected(value);
+                  form.setFieldValue('requiredTag', '');
+                  form.setFieldValue('requiredDrinkTag', '');
+                  form.setFieldValue('currentBudget', 0);
+                }}>
+                  {characterData.map((character: any) => (
+                    <Select.Option key={character.name} value={character.name}>{character.name}</Select.Option>
+                  ))}
+                </Select>
+              </Form.Item>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+              <Form.Item name="requiredTag" label="Required Dish Tag">
+                <Select>
+                  {form.getFieldValue('character') && characterSelected ?
+                  // if character is selected, then filter the food tags based on the character's food preferences
+                    foodTagsData.filter((tag: any) => characterData.find((character: any) => character.name === form.getFieldValue('character'))?.foodPreferences.includes(tag)).map((tag: any) => (
+                      <Select.Option key={tag} value={tag}>{tag}</Select.Option>
+                    ))
+                    : foodTagsData.map((tag: any) => (
+                      <Select.Option key={tag} value={tag}>{tag}</Select.Option>
+                    ))
+                  }
+                </Select>
+              </Form.Item>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+              <Form.Item name="requiredDrinkTag" label="Required Drink Tag">
+                <Select >
+                  {form.getFieldValue('character') && characterSelected ?
+                  // if character is selected, then filter the drink tags based on the character's drink preferences
+                    drinkTagsData.filter((tag: any) => characterData.find((character: any) => character.name === form.getFieldValue('character'))?.drinkPreferences.includes(tag)).map((tag: any) => (
+                      <Select.Option key={tag} value={tag}>{tag}</Select.Option>
+                    ))
+                    : drinkTagsData.map((tag: any) => (
+                      <Select.Option key={tag} value={tag}>{tag}</Select.Option>
+                    ))
+                  }
+                </Select>
+              </Form.Item>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+              <Form.Item name="currentBudget" label="Current Budget">
+                <InputNumber style={{ width: '100%' }} addonAfter="¥" />
+              </Form.Item>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
+              <Button
+                htmlType="submit"
+                type="primary"
+              >
+                Calculate
+              </Button>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+              <Modal
+                open={modalOpen}
+                title="Results"
+                onCancel={() => setModalOpen(false)}
+                onOk={() => {
+                  setModalOpen(false)
+                  resultsForm.resetFields();
+                }}
+              >
+                <Form
+                  layout="vertical"
+                  form={resultsForm}
+                >
+                  <Form.Item name="dishName" label="Dish Name">
+                    <Input />
+                  </Form.Item>
+
+                  <Form.Item name="dishCookware" label="Cookware">
+                    <Input />
+                  </Form.Item>
+
+                  <Form.Item name="ingredients" label={`Ingredients (${ingredientScore} score)`}>
+                    <Input.TextArea />
+                  </Form.Item>
+
+                  <Form.Item name="drinks" label={`Drinks (${drinkScore} score)`}>
+                    <Input.TextArea />
+                  </Form.Item>
+                </Form>
+              </Modal>
+            </Form>
+          </Card>
+        </Col>
+      </Row>
+    </div>
   )
 }
+
+export default Home;
