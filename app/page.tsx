@@ -1,5 +1,5 @@
 "use client";
-import { Row, Col, Card, Form, InputNumber, Select, Button, Modal, Input } from "antd";
+import { Row, Col, Card, Form, InputNumber, Select, Button, Modal, Input, Checkbox } from "antd";
 import { useForm } from "antd/lib/form/Form";
 import { useState } from "react";
 const characterData = require(`@constants/characters.json`);
@@ -8,6 +8,8 @@ const ingredientsData = require(`@constants/ingredients.json`);
 const drinksData = require(`@constants/drinks.json`);
 const foodTagsData = require(`@constants/foodTags.json`);
 const drinkTagsData = require(`@constants/drinkTags.json`);
+
+const CheckboxGroup = Checkbox.Group
 
 const Home = () => {
   const [form] = useForm();
@@ -23,6 +25,7 @@ const Home = () => {
     const requiredTag = values.requiredTag;
     const requiredDrinkTag = values.requiredDrinkTag;
     const currentBudget = values.currentBudget;
+    const currentCookwares = values.currentCookwares;
     let remainingBudget = currentBudget;
 
     // find character
@@ -35,7 +38,13 @@ const Home = () => {
     const characterDrinkTags = characterFound.drinkPreferences;
     let dish = dishesData.find((dish: any) => {
       const dishTags = dish.tags;
-      return dishTags.some((tag: string) => characterTags.includes(tag) && tag === requiredTag && dish.price <= currentBudget);
+      const dishCookware = dish.cookware;
+      return dishTags.some((tag: string) =>
+        characterTags.includes(tag)
+        && tag === requiredTag
+        && dish.price <= currentBudget
+        && currentCookwares.includes(dishCookware)
+      );
     });
 
     // if no dishes are found, default to the first dish
@@ -197,6 +206,10 @@ const Home = () => {
 
               <Form.Item name="currentBudget" label="Current Budget">
                 <InputNumber style={{ width: '100%' }} addonAfter="¥" />
+              </Form.Item>
+
+              <Form.Item name="currentCookwares" label="Current Cookwares">
+                <CheckboxGroup options={['煮锅', '烧烤架', '油锅', '蒸锅', '料理台']} />
               </Form.Item>
 
               <Button
